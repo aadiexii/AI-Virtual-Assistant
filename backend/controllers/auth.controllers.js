@@ -80,7 +80,7 @@ const signin = async (req, res) => {
 }
 
 
-const logout = () => {
+const logout = (req, res) => {
     try{
         res.clearCookie("token")
         return res.status(200).json({
