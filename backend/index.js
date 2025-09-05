@@ -7,6 +7,7 @@ import authRouter from './routes/auth.routes.js'
 import cookieParser from 'cookie-parser'
 import bodyParser from 'body-parser'
 import cors from 'cors'
+import userRouter from './routes/user.routes.js'
 
 
 app.use(express.json())
@@ -16,6 +17,7 @@ app.use(cors({
     credentials: true
 }))
 app.use('/api/auth', authRouter)
+app.use('/api/user', userRouter)
 
 
 const port = process.env.PORT
