@@ -1,4 +1,4 @@
-import User from "../schema/user.schema";
+import User from "../schema/user.schema.js";
 
 export const getCurrentUser = async (req, res) => {
     try{

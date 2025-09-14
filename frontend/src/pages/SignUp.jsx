@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+ import React, { useContext, useState } from 'react'
 import bg from '../assets/Background.png'
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
@@ -13,7 +13,7 @@ const SignUp = () => {
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
-  const {serverUrl} = useContext(userDataContext)
+  const {serverUrl,userData, setuserData} = useContext(userDataContext)
   const [err, setErr] = useState("")
   const [loading, setLoading] = useState(false)
  
@@ -25,10 +25,12 @@ const SignUp = () => {
       let result = await axios.post(`${serverUrl}/api/auth/signup`, {
         name, email, password
       },{withCredentials: true})
-        console.log(result.data)
+        setuserData(result.data)
         setLoading(false)
+        navigate('/customize')
     }catch(error){
         console.log(error)
+        setuserData(null)
         setLoading(false)
         setErr(error.response?.data?.message || "Something went wrong");
      }

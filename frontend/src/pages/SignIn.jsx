@@ -11,7 +11,7 @@ const SignIn = () => {
   const navigate = useNavigate()
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
-  const {serverUrl} = useContext(userDataContext)
+  const {serverUrl,userData, setuserData} = useContext(userDataContext)
   const [err, setErr] = useState("")
   const [loading, setLoading] = useState(false)
  
@@ -23,10 +23,12 @@ const SignIn = () => {
       let result = await axios.post(`${serverUrl}/api/auth/signin`, {
           email, password
       },{withCredentials: true})
-        console.log(result.data)
+        setuserData(result.data)
         setLoading(false)
+        navigate('/')
     }catch(error){
         console.log(error)
+        setuserData(null)
         setLoading(false) 
         setErr(error.response?.data?.message || "Something went wrong");
      }
