@@ -4,8 +4,8 @@ const isAuth = async (req, res, next) => {
       try{
          const token = req.cookies.token
         if(!token){
-            return res.status(400).json({
-                message: "Users's token doesn't found"
+            return res.status(401).json({
+                message: "User's token not found"
             })
         }
 
@@ -15,8 +15,8 @@ const isAuth = async (req, res, next) => {
         next();
       }catch(error){
             console.log(error);
-            return res.status(500).json({
-                message: "isAuth Error"
+            return res.status(401).json({
+                message: "Invalid or expired token"
             })
       }
 }
