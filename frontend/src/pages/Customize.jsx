@@ -8,8 +8,10 @@ import Image6 from '../assets/Image6.png'
 import Image7 from '../assets/Image7.png'
 import Card from '../Components/Card'
 import { RiImageAddLine } from "react-icons/ri";
-import { userDataContext } from '../contextApi/userContext'
 import { useNavigate } from 'react-router-dom'
+import { userDataContext } from '../contextApi/userContext'
+import { MdArrowBack } from "react-icons/md";
+
 
 const Customize = () => {
   const {serverUrl, userData, setuserData,frontendImage, setFrontendImage, backendImage, setBackendImage, selectedImage, setSelectedImage} = useContext(userDataContext)
@@ -23,7 +25,10 @@ const navigate = useNavigate()
   }
 
   return (
-    <div className='w-full h-[100vh] bg-gradient-to-t from-[black] to-[#0a0a6b] flex justify-center items-center flex-col p-[20px]'> 
+    <div className='w-full h-[100vh] bg-gradient-to-t from-[black] to-[#0a0a6b] flex justify-center items-center flex-col p-[20px] relative'> 
+        <MdArrowBack className='absolute text-white top-[30px] left-[30px] w-[25px] h-[25px] cursor-pointer' onClick={() => {
+          navigate('/')
+        }}/>
       <h1 className='text-white text-[30px] text-center mb-[40px]'>Select Your <span className='text-blue-600'>Assistant Image</span></h1>
       <div  className="w-full max-w-[900px] flex justify-center items-center flex-wrap gap-[15px]">
           <Card image={Image1}/>

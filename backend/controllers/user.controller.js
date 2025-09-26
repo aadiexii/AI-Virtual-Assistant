@@ -1,3 +1,4 @@
+import uploadOnCloudinary from "../config/cloudinary.js";
 import User from "../schema/user.schema.js";
 
 export const getCurrentUser = async (req, res) => {
@@ -16,5 +17,27 @@ export const getCurrentUser = async (req, res) => {
         return res.status(400).json({
             message: "Get Current User Error"
         })
+    }
+}
+
+export const updateAssistant = async (req, res) => {
+    try {
+        const {assistantName, imageUrl} = req.body;
+        let assistantImage;
+        if(req.file){
+            assistantImage = await uploadOnCloudinary(req.file.path)
+        }else{
+            assistantImage = imageUrl
+        }
+
+        const user = await User.findByIdAndUpdate(req.userId, {
+            assistantImage, assistantName
+        }, {new: true}).select("-password")
+        
+        return res.status(200).json(user)
+    } catch (error) {
+        return res.status(400).json({
+            message: "Update Assistant Info User Error"
+        })       
     }
 }
