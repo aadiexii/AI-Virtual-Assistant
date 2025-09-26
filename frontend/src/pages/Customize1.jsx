@@ -9,10 +9,11 @@ import { MdArrowBack } from "react-icons/md";
 const Customize1 = () => {
     const {userData,backendImage, selectedImage, serverUrl, setuserData} = useContext(userDataContext)
     const [assistantName, setAssistantName] = useState(userData?.assistantName ||  "")
-    const [loading, setIsLoading] = useState(false)
+    const [loading, setLoading] = useState(false)
     const navigate = useNavigate()
     
     const handleUpdateAssistant = async() => {
+      setLoading(true)
       try {
         let formData = new FormData()
         formData.append('assistantName', assistantName)
@@ -22,9 +23,12 @@ const Customize1 = () => {
           formData.append("imageUrl", selectedImage)
         }
         const result = await axios.post(`${serverUrl}/api/user/updateassistant`,formData, {withCredentials:true})
+        setLoading(false)
         console.log(result.data)
         setuserData(result.data)
+        navigate('/')
       } catch (error) {
+        setLoading(false)
         console.log(error)
       }
     }
