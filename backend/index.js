@@ -8,6 +8,7 @@ import cookieParser from 'cookie-parser'
 import bodyParser from 'body-parser'
 import cors from 'cors'
 import userRouter from './routes/user.routes.js'
+import geminiResponse from './gemini.js'
 
 
 app.use(express.json())
