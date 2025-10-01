@@ -41,7 +41,7 @@ const UserContext = ({children}) => {
       }
     }
      
-    const getGeminiResponse = async () =>{
+    const getGeminiResponse = async (command) =>{
     try{
       const result = await axios.post(`${serverUrl}/api/user/asktoassistant`,{command}, {
           withCredentials: true

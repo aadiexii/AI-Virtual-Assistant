@@ -2,6 +2,7 @@ import { response } from "express";
 import uploadOnCloudinary from "../config/cloudinary.js";
 import User from "../schema/user.schema.js";
 import moment from "moment/moment.js";
+import geminiResponse from '../gemini.js'
 
 export const getCurrentUser = async (req, res) => {
     try{
