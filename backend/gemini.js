@@ -26,7 +26,7 @@ const geminiResponse = async(command, assistantName, userName) => {
         - "general": if it's a factual or informational question.
         - "google_search": if user wants to search something on Google .
         - "youtube_search": if user wants to search something on YouTube.
-        - "youtube_search": if user wants to directly play a video or song.
+        - "youtube_play": if user wants to directly play a video or song.
         - "calculator_open": if user wants to open a calculator .
         - "instagram_open": if user wants to open instagram .
         - "facebook_open": if user wants to open facebook.

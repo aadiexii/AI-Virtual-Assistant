@@ -52,9 +52,9 @@ export const askToAssistant =async (req, res) => {
         const userName = user.name
         const assistantName = user.assistantName;
         
-        const result = await geminiResponse(command, userName, assistantName);
-        
-        const jsonMatch = result.match(/{[\s\S]*}/)
+        const result = await geminiResponse(command, assistantName, userName);
+        const text = result.text;
+        const jsonMatch = text.match(/{[\s\S]*}/)
         if(!jsonMatch){
             return res.status(400).json({
                 response: "Sorry, I can't"
@@ -65,25 +65,25 @@ export const askToAssistant =async (req, res) => {
         const type = gemResult.type;
 
         switch(type){
-            case 'get-date': 
+            case 'get_date': 
                 return res.json({
                     type,
                     userInput: gemResult.userInput,
                     response: `Current date is ${moment().format("YYYY-MM-DD")}`
                 });
-            case 'get-time': 
+            case 'get_time': 
                 return res.json({
                     type,
                     userInput: gemResult.userInput,
                     response: `Current time is ${moment().format("hh:mm A")}`
                 });
-            case 'get-day': 
+            case 'get_day': 
                 return res.json({
                     type,
                     userInput: gemResult.userInput,
                     response: `today is ${moment().format("dddd")}`
                 })
-            case 'month': 
+            case 'get_month': 
                 return res.json({
                     type,
                     userInput: gemResult.userInput,
@@ -99,8 +99,14 @@ export const askToAssistant =async (req, res) => {
                 return res.json({
                     type,
                     userInput: gemResult.userInput,
-                    response: gemResult.userInput
+                    response: gemResult.response,
                 });
+            case 'general':   // <-- add this
+            return res.json({
+                type,
+                userInput: gemResult.userInput || command,
+                response: gemResult.response || text
+            });
             default:
                 return res.status(400).json({
                     response: "I can't understand the command"
