@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useRef, useState } from 'react'
 import { userDataContext } from '../contextApi/UserContext'
 import { redirectDocument, useNavigate } from 'react-router-dom'
 import axios from 'axios'
-import geminiResponse from '../../../backend/gemini'
 import aiImage from '../assets/ai.gif'
 import userImage from '../assets/user.gif'
 import { RiMenuUnfold4Fill } from "react-icons/ri";
@@ -120,7 +119,7 @@ const Home = () => {
             recognition.start()
           } catch (error) {
             if(error.name !== "InvalidStateError"){
-              console.error(e)
+              console.error(error)
             }
           }
         }
