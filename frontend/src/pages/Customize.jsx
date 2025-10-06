@@ -9,7 +9,7 @@ import Image7 from '../assets/Image7.png'
 import Card from '../Components/Card'
 import { RiImageAddLine } from "react-icons/ri";
 import { useNavigate } from 'react-router-dom'
-import { userDataContext } from '../contextApi/userContext'
+import { userDataContext } from '../contextApi/UserContext'
 import { MdArrowBack } from "react-icons/md";
 
 
