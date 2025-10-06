@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
-import { userDataContext } from '../contextApi/userContext'
+import { userDataContext } from '../contextApi/UserContext'
 import { redirectDocument, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import geminiResponse from '../../../backend/gemini'
