@@ -14,7 +14,7 @@ import geminiResponse from './gemini.js'
 app.use(express.json())
 app.use(cookieParser())
 app.use(cors({
-    origin: "https://ai-virtual-assistant-backend-ttm7.onrender.com",
+    origin: "https://ai-virtual-assistant-g6vi.onrender.com",
     credentials: true
 }))
 app.use('/api/auth', authRouter)
