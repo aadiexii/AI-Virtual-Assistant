@@ -1,4 +1,4 @@
-AI Virtual Stack
+AI Virtual Assistant
 ================
 
 A simple voice-driven assistant that listens for a wake phrase, uses Gemini to understand commands, and performs quick actions while speaking responses.
