@@ -3,7 +3,7 @@ import bg from '../assets/Background.png'
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
-import { userDataContext } from '../contextApi/userContext';
+import { userDataContext } from '../contextApi/UserContext';
 import axios from 'axios'
 
 
