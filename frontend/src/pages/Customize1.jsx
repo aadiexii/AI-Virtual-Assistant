@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react'
 
 import axios from 'axios'
 import { Navigate, useNavigate } from 'react-router-dom'
-import { userDataContext } from '../contextApi/userContext'
+import { userDataContext } from '../contextApi/UserContext'
 import { MdArrowBack } from "react-icons/md";
 
 
