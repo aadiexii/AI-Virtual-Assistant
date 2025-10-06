@@ -5,7 +5,7 @@ import SignIn from './pages/SignIn.jsx'
 import Customize from './pages/Customize.jsx'
 import Customize1 from './pages/Customize1.jsx'
 import { useContext } from 'react'
-import { userDataContext } from './contextApi/userContext.jsx'
+import { userDataContext } from './contextApi/UserContext.jsx'
 import Home from './pages/Home.jsx'
 
 const App = () => {
